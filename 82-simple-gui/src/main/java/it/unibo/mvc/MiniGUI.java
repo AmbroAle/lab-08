@@ -1,7 +1,9 @@
 package it.unibo.mvc;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -42,6 +44,23 @@ public class MiniGUI {
                 System.out.println(randomGenerator.nextInt());
             }
         });
+
+        // phase 1
+        final JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel,BoxLayout.LINE_AXIS));
+        canvas.add(panel);
+        final JButton button1 = new JButton("Print a random number on standard JLabel result");
+        panel.add(button1);
+
+        //phase 2 and 3
+        final JLabel results = new JLabel("Result: 0");
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                results.setText("result: "+ randomGenerator.nextInt());
+            }
+        });
+        canvas.add(results, BorderLayout.NORTH);
     }
 
     private void display() {
